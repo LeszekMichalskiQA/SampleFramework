@@ -2,10 +2,13 @@ package pages;
 
 import BasePage.BasePage;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.asserts.SoftAssert;
+
+import java.util.List;
 
 public class LoginPage extends BasePage {
 
@@ -16,7 +19,12 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//input[@id='login-button']")
     private WebElement loginButton;
     @FindBy(xpath = "//div[contains(text(), 'Products')]")
-    private WebElement productsField;
+    List<WebElement> productsField;
+    @FindBy(xpath =  "//h3[@data-test='error']")
+    List<WebElement> errorMessageByList;
+
+    @FindBy(xpath =  "//h3[@data-test='error']")
+    WebElement errorMessage;
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -32,7 +40,11 @@ public class LoginPage extends BasePage {
         usernameField.sendKeys(user);
         passwordField.sendKeys(password);
         loginButton.click();
-        softAssert.assertTrue(productsField.isDisplayed(), "'Products' header was NOT displayed");
+        if(doElementsExists(errorMessageByList)){
+            String errorText = errorMessage.getAttribute("textContent");
+            softAssert.assertTrue(errorText.contains("Epic sadface: "), "Error message was NOT present");
+        }
+        softAssert.assertTrue(!productsField.isEmpty(), "'Products' header was NOT displayed");
         return new ProductsPage(driver);
     }
 
