@@ -1,5 +1,7 @@
 package BasePage;
 
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +23,8 @@ public abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    public BasePage(WebDriver driver) {
+
+    protected BasePage(WebDriver driver) {
         this.driver = driver;
         this.actions = new Actions(driver);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
