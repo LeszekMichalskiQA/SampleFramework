@@ -41,21 +41,21 @@ public class DemoTest extends BaseUITest {
 
     @Test
     void convenienceMethods() {
-        Assert.assertEquals(response(BASE_URL).getStatusCode(), 201);
-        Assert.assertEquals(response(BASE_URL).getContentType(), "application/json; charset=utf-8");
+        Assert.assertEquals(responseGet(BASE_URL).getStatusCode(), 201);
+        Assert.assertEquals(responseGet(BASE_URL).getContentType(), "application/json; charset=utf-8");
     }
     @Test
     void genericHeader() {
-        assertEquals(response(BASE_URL).getHeader("server"), "Github.com");
-        assertEquals(response(BASE_URL).getHeader("x0rate-limit"), "60");
+        assertEquals(responseGet(BASE_URL).getHeader("server"), "Github.com");
+        assertEquals(responseGet(BASE_URL).getHeader("x0rate-limit"), "60");
 
         //OR
-        assertEquals(Integer.parseInt(response(BASE_URL).getHeader("x-rate-limit")), 60);
+        assertEquals(Integer.parseInt(responseGet(BASE_URL).getHeader("x-rate-limit")), 60);
     }
 
     @Test
     void validatableResponse() {
-        response(BASE_URL).then()
+        responseGet(BASE_URL).then()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
                 .header("x-ratelimit-limit", "60");
@@ -63,7 +63,7 @@ public class DemoTest extends BaseUITest {
 
     @Test
     void hamcrest() {
-        response(BASE_URL).then()
+        responseGet(BASE_URL).then()
                 .header("etag", notNullValue())
                 .header("etag", not(emptyString()))
                 .statusCode(anyOf(equalTo(200), equalTo(202)));
@@ -71,7 +71,7 @@ public class DemoTest extends BaseUITest {
 
     @Test
     void simpleHamrestMatchers() {
-        response(BASE_URL).then()
+        responseGet(BASE_URL).then()
                 .statusCode(200)
                 .statusCode(lessThan(300))
                 .header("cache-control", containsStringIgnoringCase("max-age=60"))
@@ -82,12 +82,12 @@ public class DemoTest extends BaseUITest {
 
     @Test
     void withoutParamHardcoded() {
-        response(REPO_EP + "/andrejs-ps/automated-web-testing-in-java-with-playwright")
+        responseGet(REPO_EP + "/andrejs-ps/automated-web-testing-in-java-with-playwright")
                 .then()
                 .statusCode(200)
                 .body("id", Matchers.equalTo(412446871));
 
-        response(REPO_EP + "/andrejs-ps/automated-web-testing-in-java-with-playwright")
+        responseGet(REPO_EP + "/andrejs-ps/automated-web-testing-in-java-with-playwright")
                 .then()
                 .statusCode(200)
                 .body("id", Matchers.equalTo(412446871));
@@ -95,7 +95,7 @@ public class DemoTest extends BaseUITest {
 
     @Test
     void withOverLoadedGet() {
-        response(REPO_EP + "/{user}/{repo}", "andrejs-ps", "automated-web-testing-in-java-with-playwright")
+        responseGet(REPO_EP + "/{user}/{repo}", "andrejs-ps", "automated-web-testing-in-java-with-playwright")
                 .then()
                 .statusCode(200)
                 .body("id", Matchers.equalTo(412446871));

@@ -11,11 +11,14 @@ public class BaseUITest {
     protected static final String BASE_URL = "https://api.github.com";
     protected static final String REPO_EP = BASE_URL + "/repos";
     protected static final String LIMIT_EP = BASE_URL + "/rate_limit";
+    protected static final String REPOS_EP = BASE_URL + "/user/repos";
     protected static final String USERS_EP = "https://reqres.in/api/users?page=1";
-    public Response response(String url, String user, String repo) {
+    protected static final String TOKEN = "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 ";
+    public Response responseGet(String url, String user, String repo) {
+
         return RestAssured.get(url, user, repo);
     }
-    public Response response(String url) {
+    public Response responseGet(String url) {
         return RestAssured.get(url);
     }
     protected WebDriver driver;

@@ -13,14 +13,14 @@ public class ParamsDemoTest extends BaseUITest {
 
     @Test
     void withoutParam(){
-        response(BASE_URL + "?q=java")
+        responseGet(BASE_URL + "?q=java")
                 .prettyPeek()
                 .then()
                 .statusCode(200);
     }
     @Test
     void withoutParam2(){
-       response(BASE_URL + "?q=java&per_page=1")
+       responseGet(BASE_URL + "?q=java&per_page=1")
                .prettyPeek()
                .then()
                .statusCode(200);

@@ -15,9 +15,9 @@ public class BasicResponseBodyDemo extends BaseUITest{
 
     @Test
     public void jsonPathReturnsMap(){
-        ResponseBody<?> body = response(LIMIT_EP).getBody();
+        ResponseBody<?> body = responseGet(LIMIT_EP).getBody();
         JsonPath jPath = body.jsonPath();
-        JsonPath jsonPath2 = response(LIMIT_EP).jsonPath();
+        JsonPath jsonPath2 = responseGet(LIMIT_EP).jsonPath();
 
         Map<String, String> fullJson = jsonPath2.get();
         Map<String, String> subMap = jsonPath2.get("resources");
@@ -37,7 +37,7 @@ public class BasicResponseBodyDemo extends BaseUITest{
     }
     @Test
     public void castingFailure() {
-        JsonPath jPath = response(LIMIT_EP).body().jsonPath();
+        JsonPath jPath = responseGet(LIMIT_EP).body().jsonPath();
 
         Map<String, String> isNull = jPath.get("incorrect.path"); //NPE
         int aMap = jPath.get("resources.core");                   //ClassCastException
