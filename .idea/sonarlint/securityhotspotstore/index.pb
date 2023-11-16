@@ -44,3 +44,5 @@ a
 1src/test/java/API/ValidatableResposeBodyDemo.java,b\f\bf706a9a9d77d156765c8d5a29c8f1457a07cd57
 Y
 )src/test/java/API/HeadAndOptionsDemo.java,f\f\ffea39e9dfeefd5c9bd48373e805658a955e9bde
+Z
+*src/test/java/API/GlobalVariablesDemo.java,6\4\643e7b186bce59352664a7fa011a45b90173c9d5

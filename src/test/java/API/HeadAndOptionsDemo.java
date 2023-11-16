@@ -28,7 +28,7 @@ public class HeadAndOptionsDemo extends BaseUITest {
         RestAssured
                 .given()
                 .auth()
-                .oauth2(TOKEN)
+                .oauth2("TOKEN")
 //                    .header("Authorization", "token " + TOKEN)
                     .body("{\"name\": \"deleteme\"}")
                 .when()
@@ -40,7 +40,7 @@ public class HeadAndOptionsDemo extends BaseUITest {
     public void patchTest(){
         RestAssured
                 .given()
-                    .header("Authorization", "token " + TOKEN)
+                    .header("Authorization", "token " + "TOKEN")
                     .body("{\"name\": \"deleteme-patched\"}")
                 .when()
                     .patch("https://api.github.com/repos/LeszekMichalskiQA/deleteme")
@@ -52,7 +52,7 @@ public class HeadAndOptionsDemo extends BaseUITest {
     public void deleteTest(){
         RestAssured
                 .given()
-                    .header("Authorization", "token " + TOKEN)
+                    .header("Authorization", "token " + "TOKEN")
                 .when()
                     .delete("https://api.github.com/repos/LeszekMichalskiQA/deleteme-patched")
                 .then()
