@@ -46,3 +46,7 @@ Y
 )src/test/java/API/HeadAndOptionsDemo.java,f\f\ffea39e9dfeefd5c9bd48373e805658a955e9bde
 Z
 *src/test/java/API/GlobalVariablesDemo.java,6\4\643e7b186bce59352664a7fa011a45b90173c9d5
+a
+1src/main/java/RestAssuredConfig/ResponseSpec.java,7\9\79c1d1c8999445af216f170b939e6213b15a7fbf
+b
+2src/main/java/RestAssuredConfig/ConfigFactory.java,3\a\3a18dbb3299e58f91448489a29b63d126db1ae8e

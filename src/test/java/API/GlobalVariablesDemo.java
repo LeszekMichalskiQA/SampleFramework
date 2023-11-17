@@ -4,7 +4,6 @@ import BasePage.BaseUITest;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
-import io.restassured.config.RedirectConfig;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.listener.ResponseValidationFailureListener;
@@ -16,6 +15,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 
+import static RestAssuredConfig.ResponseSpec.badEndpointSpec;
 import static io.restassured.config.FailureConfig.failureConfig;
 import static io.restassured.config.RedirectConfig.redirectConfig;
 import static org.hamcrest.Matchers.equalTo;
@@ -91,11 +91,17 @@ public class GlobalVariablesDemo extends BaseUITest {
     }
     @Test
     void testWithSpecOne(){
-        responseGet(BASE_URL + "/non/existing/url");
+        responseGet(BASE_URL + "/non/existing/url")
+                .then()
+                .spec(badEndpointSpec())
+                .body("message", equalTo("Not Found"));
     }
     @Test
     void testWithSpecTwo(){
-        responseGet(BASE_URL + "/non/existing/url");
+        responseGet(BASE_URL + "/non/existing/url")
+                .then()
+                .spec(badEndpointSpec())
+                .body("documentation_url", equalTo("https://developer.github.com/v3"));
     }
     @Test
     void testWithSpecThree(){
