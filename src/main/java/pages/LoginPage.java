@@ -35,7 +35,7 @@ public class LoginPage extends BasePage {
 
     @Step("Login to the Application")
     public ProductsPage loginUser(String user, String password, SoftAssert softAssert) {
-        waitForPageToLoad();
+        waitForPageToLoad(30);
         usernameField.sendKeys(user);
         passwordField.sendKeys(password);
         loginButton.click();

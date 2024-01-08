@@ -17,10 +17,10 @@ public class ProductsPage extends BasePage {
     }
 
     public LoginPage goBackToLoginPageByLogout(){
-        waitForPageToLoad();
+        waitForPageToLoad(30);
         menuButton.click();
         wait(elementToBeClickable(logOutButton), 15).click();
-        waitForPageToLoad();
+        waitForPageToLoad(30);
         return new LoginPage(driver);
     }
 }
