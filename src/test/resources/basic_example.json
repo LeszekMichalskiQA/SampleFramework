@@ -1,0 +1,19 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "userId" : {
+      "type": "integer",
+      "minimum" : 2,
+      "maximum" : 10
+    },
+    "title": {
+      "type": "string",
+      "minLength" : 50
+    },
+    "unknown": {}
+  },
+
+  "required": ["userId", "title", "unknown"],
+  "additionalProperties": false
+}

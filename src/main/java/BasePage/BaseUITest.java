@@ -17,6 +17,7 @@ public class BaseUITest {
     protected static final String REPOS_EP = BASE_URL + "/user/repos";
     protected static final String USERS_EP = "https://reqres.in/api/users?page=1";
     protected static final String POSTS_EP = "https://jsonplaceholder.typicode.com/posts";
+    protected static final String REST_ASSURED = BASE_URL + "/users/rest-assured";
     protected WebDriver driver;
 
     public Response responseGet(String url, String user, String repo) {
